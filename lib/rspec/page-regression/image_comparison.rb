@@ -34,9 +34,9 @@ module RSpec::PageRegression
 			puts "\nCreated missing image for you with:\n#{command}"
 		end
 
-		def handle_missing_screenshot(autocreate_reference_screenshots, test_screenshot, reference_screenshot)
+		def handle_missing_screenshot(create_reference_screenshots, test_screenshot, reference_screenshot)
       command = build_overwrite_command(test_screenshot, reference_screenshot)
-			if autocreate_reference_screenshots
+			if create_reference_screenshots
 				create_screenshot(command)
 			else
         puts "Create screenshots yourself with:\n#{command}"
@@ -59,14 +59,13 @@ module RSpec::PageRegression
 				raise "Unlinking difference_image failed" if difference_image.exist?
 			end
 
-      update_existing_screenshots      = RSpec::PageRegression.update_existing_screenshots
-      # FIXME: jekuno 15.09.15 read from configuration variables
-      autocreate_reference_screenshots = true
+      update_reference_screenshots = RSpec::PageRegression.update_reference_screenshots
+      create_reference_screenshots = RSpec::PageRegression.create_reference_screenshots
 
-			if update_existing_screenshots
+			if update_reference_screenshots
 				overwrite_existing_screenshot(test_screenshot, reference_screenshot)
 			elsif not reference_screenshot.exist?
-				handle_missing_screenshot(autocreate_reference_screenshots, test_screenshot, reference_screenshot)
+				handle_missing_screenshot(create_reference_screenshots, test_screenshot, reference_screenshot)
 			end
 
 			return :missing_expected unless reference_screenshot.exist?
