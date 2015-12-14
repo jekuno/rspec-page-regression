@@ -9,6 +9,14 @@ module RSpec::PageRegression
     yield self
   end
 
+  def self.update_existing_screenshots= (update_existing_screenshots)
+    @@update_existing_screenshots = update_existing_screenshots
+  end
+
+  def self.update_existing_screenshots
+    @@update_existing_screenshots ||= false
+  end
+
   def self.page_size= (page_size)
     @@page_size = page_size
   end
