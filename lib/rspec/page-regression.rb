@@ -9,6 +9,22 @@ module RSpec::PageRegression
     yield self
   end
 
+  def self.update_reference_screenshots= (update_reference_screenshots)
+    @@update_reference_screenshots = update_reference_screenshots
+  end
+
+  def self.update_reference_screenshots
+    @@update_reference_screenshots ||= false
+  end
+
+  def self.create_reference_screenshots= (create_reference_screenshots)
+    @@create_reference_screenshots = create_reference_screenshots
+  end
+
+  def self.create_reference_screenshots
+    @@create_reference_screenshots ||= false
+  end
+
   def self.page_size= (page_size)
     @@page_size = page_size
   end

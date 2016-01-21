@@ -50,7 +50,7 @@ Rspec-page-regression has multiple versions that work in concert with the [signi
 ### Upgrading from rspec-page-regression v0.4 to v1.0
 * Rename all uses of `match_expectation` to `match_reference_screenshot` in your sources.
 * Delete the directories `spec/expectation` and `tmp/spec/expectation`
-* Make sure that the configuration flag `autocreate_reference_screenshots` is set to true (this is the default). # TODO: Depends on finishing issue #22
+* Make sure that the configuration flag `create_reference_screenshots` is set to true (this is the default).
 * Run all specs. A new directory `reference_screenshots` directory with up to date screenshots will be created automatically.
 * Check that all screenshots look ok prior to committing them.
 
