@@ -68,8 +68,8 @@ module RSpec::PageRegression
 				handle_missing_screenshot(create_reference_screenshots, test_screenshot, reference_screenshot)
 			end
 
-			return :missing_expected unless reference_screenshot.exist?
-			return :missing_test     unless test_screenshot.exist?
+			return :missing_reference_screenshot unless reference_screenshot.exist?
+			return :missing_test_screenshot      unless test_screenshot.exist?
 
 			@iexpected = ChunkyPNG::Image.from_file(reference_screenshot)
 			@itest     = ChunkyPNG::Image.from_file(test_screenshot)
